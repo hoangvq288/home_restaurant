@@ -21,10 +21,14 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 
+# bootstrap & jquery
+gem 'bootstrap'
+gem 'jquery-rails'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
