@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  username: postgres
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: home_restaurant_development
+
+test:
+  <<: *default
+  database: home_restaurant_test
+
+production:
+  <<: *default
+  database: home_restaurant_production
