@@ -1,24 +1,10 @@
-# README
+# My home restaurant
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web app only serves for our staff , let the staffs can create order base on customers orders !
 
-Things you may want to cover:
+## Explanation - Flow
 
-* Ruby version
+Customers come to our restaurant , staffs will serve customer by receiving customers's orders and
+save it into the app .
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app will send the notifications via SLACK web hook , so we can make sure that "FIRST COME FIRST SERVE"
