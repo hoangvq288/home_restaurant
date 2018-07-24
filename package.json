@@ -1,5 +1,25 @@
 {
   "name": "home_restaurant",
-  "private": true,
-  "dependencies": {}
+  "version": "1.0.0",
+  "description": "This web app only serves for our staff , let the staffs can create order base on customers orders !",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diepsohung/home_restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diepsohung/home_restaurant/issues"
+  },
+  "homepage": "https://github.com/diepsohung/home_restaurant#readme",
+  "dependencies": {
+    "admin-lte": "2.3.5"
+  }
 }

@@ -1,1 +1,8 @@
-@import 'bootstrap';
+@import 'admin-lte/bootstrap/css/bootstrap';
+@import 'admin-lte/dist/css/AdminLTE';
+@import 'admin-lte/dist/css/skins/skin-blue';
+
+body {
+  font-family: monaco;
+}
+

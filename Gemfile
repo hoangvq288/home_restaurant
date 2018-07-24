@@ -20,10 +20,16 @@ gem 'boot_slack_bot'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'paranoia'
 
 # bootstrap & jquery
 gem 'bootstrap'
 gem 'jquery-rails'
+
+# AdminLTE helpers
+gem 'font-ionicons-rails'
+gem 'font_awesome5_rails'
 
 group :development, :test do
   gem 'awesome_print'
