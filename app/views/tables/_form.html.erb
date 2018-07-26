@@ -1,20 +1,18 @@
-<%= simple_form_for @table do |f| %>
+<%= simple_form_for(@table) do |f| %>
   <div class="box-body">
     <div class="row">
-      <div class="col-xs-3">
-        <%= f.input :name, class: 'form-control' %>    
+      <div class="col-xs-4">
+        <%= f.input :name %>    
       </div>
-      <div class="col-xs-3">
-        <%= f.input :seat_number, class: 'form-control' %>
+      <div class="col-xs-4">
+        <%= f.input :seat_number %>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-3">
-        <%= f.input :active, class: 'form-control' %>
-      </div>
+      <%= f.input :active, input_html: { class: 'i-check' } %>
     </div>
   </div>
   <div class="box-footer">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit %>
   </div>
 <% end %>

@@ -1,7 +1,13 @@
-@import 'admin-lte/bootstrap/css/bootstrap';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'admin-lte/dist/css/AdminLTE';
 @import 'admin-lte/dist/css/skins/skin-blue';
+@import 'icheck/flat/green';
 
 body {
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.icheckbox_flat-green {
+  margin-right: 10px;
 }

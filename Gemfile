@@ -24,12 +24,13 @@ gem 'will_paginate-bootstrap'
 gem 'paranoia'
 
 # bootstrap & jquery
-gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 # AdminLTE helpers
 gem 'font-ionicons-rails'
 gem 'font_awesome5_rails'
+gem 'icheck-rails'
 
 group :development, :test do
   gem 'awesome_print'
