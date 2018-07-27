@@ -1,0 +1,46 @@
+<%= form_with url: tables_path, method: :get do %>
+  <table class="table table-hover">
+    <tr>
+      <th>ID</th>
+      <th>Table Name</th>
+      <th>Number of Seats</th>
+      <th>Is active ?</th>
+      <th>Action</th>
+    </tr>
+
+    <%= render 'search_form' %>
+
+    <% @tables.each do |table| %>
+      <tr>
+        <td><%= table.id %></td>
+        <td><%= table.name %></td>
+        <td><%= table.seat_number %></td>
+        <td><span class="label label-<%= table.active ? 'success' : 'danger' %>"><%= table.active %></span></td>
+        <td>
+          <%= link_to edit_table_path(table) do %>
+            <i class="fa fa-edit"></i>&nbsp;&nbsp;
+          <% end %>
+
+          <a type="button" data-toggle="modal" data-target="#delete_table">
+            <i class="fa fa-trash"></i>&nbsp;
+          </a>
+
+          <%= render partial: 'modal_delete', locals: { table: table } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<div class="row text-center">
+  <div class="col-xs-2">
+    <div>  Số mục hiển thị trên trang
+    <%= select_tag('',
+                    options_for_select([30, 50, 100], params[:per_page]),
+                    { class: 'form-control will_paginate_per_page' }) %>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <%= will_paginate @tables, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
+  </div>
+</div>

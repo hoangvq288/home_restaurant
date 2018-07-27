@@ -2,8 +2,9 @@ class TablesController < ApplicationController
   before_action :set_table, except: %i[index create]
 
   def index
-    @tables = Table.all
     @table = Table.new # For popup modal
+    # Pass model object then convert to class to call method in service
+    @tables = SearchService.search(@table, params).paginate(page: params[:page], per_page: params[:per_page])
   end
 
   def create

@@ -1,0 +1,11 @@
+<tr>
+  <th><%= number_field_tag 's[id]', params[:s].try(:[], :id), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[name]', params[:s].try(:[], :name), class: 'form-control' %></th>
+  <th><%= number_field_tag 's[seat_number]', params[:s].try(:[], :seat_number), class: 'form-control' %></th>
+  <th><%= select_tag 's[active]', options_for_select([["TRUE", true], ["FALSE", false]], params[:s].try(:[], :active)), prompt: 'Please choose', class: 'form-control' %></th>
+  <th>
+    <button type="submit" class="btn btn-primary">
+      <i class="glyphicon glyphicon-search"></i>
+    </button>
+  </th>
+</tr>
