@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require lodash
 //= require bootstrap-sprockets
 //= require admin-lte/dist/js/app.js
 //= require 'icheck'

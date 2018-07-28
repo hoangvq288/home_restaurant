@@ -1,31 +1,34 @@
 <%= form_with url: tables_path, method: :get do %>
   <table class="table table-hover">
     <tr>
+      <th>
+        <%= render partial: "components/check_box/check_all_checkbox.component",
+                   locals: {
+                     check_box_name: '',
+                     target_check_box: 'data-select-table'
+                   } %>
+      </th>
       <th>ID</th>
       <th>Table Name</th>
       <th>Number of Seats</th>
       <th>Is active ?</th>
-      <th>Action</th>
     </tr>
 
     <%= render 'search_form' %>
 
     <% @tables.each do |table| %>
       <tr>
+        <td>
+          <input type="checkbox" class="i-check" value="<%= table.id %>" data-select-table>
+        </td>
         <td><%= table.id %></td>
         <td><%= table.name %></td>
         <td><%= table.seat_number %></td>
         <td><span class="label label-<%= table.active ? 'success' : 'danger' %>"><%= table.active %></span></td>
         <td>
-          <%= link_to edit_table_path(table) do %>
-            <i class="fa fa-edit"></i>&nbsp;&nbsp;
+          <%= link_to edit_table_path(table), class: 'btn btn-primary' do %>
+            <i class="fa fa-edit"></i>
           <% end %>
-
-          <a type="button" data-toggle="modal" data-target="#delete_table">
-            <i class="fa fa-trash"></i>&nbsp;
-          </a>
-
-          <%= render partial: 'modal_delete', locals: { table: table } %>
         </td>
       </tr>
     <% end %>
@@ -44,3 +47,5 @@
     <%= will_paginate @tables, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
   </div>
 </div>
+
+<%= render 'script' %>

@@ -1,5 +1,5 @@
 class TablesController < ApplicationController
-  before_action :set_table, except: %i[index create]
+  before_action :set_table, only: %i[show edit update]
 
   def index
     @table = Table.new # For popup modal
@@ -31,9 +31,10 @@ class TablesController < ApplicationController
     redirect_to tables_path
   end
 
-  def destroy
-    if @table.destroy
-      flash[:success] = 'Table destroyed !'
+  def destroy_multiple
+    ids = params[:table_ids].split(',')
+    if Table.where(id: ids).destroy_all
+      flash[:success] = 'Tables destroyed !'
     else
       flash[:error] = 'Error happened !'
     end

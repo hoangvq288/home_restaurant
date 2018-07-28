@@ -1,20 +1,23 @@
 <section class="content">
   <div class="row">
+  
     <div class="col-xs-12">
+      <div class="text-right margin-bottom">
+        <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#create_table">
+          <i class="fa fa-plus"></i>&nbsp; Create Table
+        </a>
+        <span data-action_button class="hidden">
+          <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_tables">
+            <i class="fa fa-trash"></i>&nbsp; Delete Table
+          </a>
+        </span>
+      </div>
+      
       <div class="box">
         <div class="box-header">
           <h3 class="box-title"><b>Table Management</b></h3>
-
-          <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <div class="input-group-btn">
-                <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#create_table">
-                  <i class="fa fa-plus"></i>&nbsp; Create Table
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
+
         <!-- /.box-header -->
         <div class="box-body table-responsive">
           <div id="tables">
@@ -44,3 +47,6 @@
     </div>
   </div>
 </div>
+
+<!-- Modal delete -->
+<%= render 'modal_delete' %>

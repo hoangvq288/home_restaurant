@@ -1,15 +1,17 @@
 <!-- Modal delete -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="delete_table">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p>Are you sure to delete this table ?</p>
-      </div>
-      <div class="modal-footer">
-        <%= link_to "Yes", table_path(table), method: :delete, class: "btn btn-primary" %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+<%= form_with url: destroy_multiple_tables_path, method: :delete, id: 'delete_tables_form', local: true do |f| %>
+  <%= f.hidden_field :table_ids %>
+  <div class="modal fade" tabindex="-1" role="dialog" id="delete_tables">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Are you sure to delete these tables ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

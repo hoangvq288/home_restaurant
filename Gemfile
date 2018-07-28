@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'font-ionicons-rails'
 gem 'font_awesome5_rails'
 gem 'icheck-rails'
+gem 'lodash-rails'
 
 group :development, :test do
   gem 'awesome_print'
