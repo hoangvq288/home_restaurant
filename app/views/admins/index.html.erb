@@ -3,24 +3,19 @@
   
     <div class="col-xs-12">
       <div class="text-right margin-bottom">
-        <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#create_table">
-          <i class="fa fa-plus"></i>&nbsp; Create Table
+        <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#create_admin">
+          <i class="fa fa-plus"></i>&nbsp; Create Admin
         </a>
-        <span data-action_button class="hidden">
-          <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_tables">
-            <i class="fa fa-trash"></i>&nbsp; Delete Table
-          </a>
-        </span>
       </div>
       
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title"><b>Table Management</b></h3>
+          <h3 class="box-title"><b>Admin Management</b></h3>
         </div>
 
         <div class="box-body table-responsive">
           <!-- CHANGE HERE TO RUN index.js.erb -->
-          <div id="tables">
+          <div id="admins"> 
             <%= render 'table' %>
           </div>
         </div>
@@ -31,20 +26,15 @@
 
 
 <!-- Modal create -->
-<div class="modal fade" id="create_table" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="create_admin" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
         <%= render 'form' %>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Modal delete -->
-<%= render 'modal_delete' %>

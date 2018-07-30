@@ -1,0 +1,12 @@
+<%= simple_form_for(@admin) do |f| %>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-8">
+        <%= f.input :email %>
+      </div>
+    </div>
+  </div>
+  <div class="box-footer">
+    <%= f.button :submit %>
+  </div>
+<% end %>

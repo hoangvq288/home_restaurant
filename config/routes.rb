@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       delete :destroy_multiple
     end
   end
+
+  resources :admins, except: %i[new destroy]
 end

@@ -1,0 +1,10 @@
+<tr>
+  <th><%= number_field_tag 's[id]', params[:s].try(:[], :id), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[email]', params[:s].try(:[], :email), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[name]', params[:s].try(:[], :name), class: 'form-control' %></th>
+  <th>
+    <button type="submit" class="btn btn-success">
+      <i class="glyphicon glyphicon-search"></i>
+    </button>
+  </th>
+</tr>
