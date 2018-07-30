@@ -10,17 +10,28 @@
     <%= stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" %>
   </head>
 
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-      <%= render partial: 'layouts/header' %>
-      <%= render partial: 'layouts/info' %>
+  <% if admin_signed_in? %>
+    <body class="hold-transition skin-blue sidebar-mini">
+      <div class="wrapper">
+        <%= render partial: 'layouts/header' %>
+        <%= render partial: 'layouts/info' %>
 
-      <div class="content-wrapper">
-        <%= render 'layouts/flash_message' %>
-        <%= yield %>
+        <div class="content-wrapper">
+          <%= render 'layouts/flash_message' %>
+          <%= yield %>
+        </div>
+
+        <%= render partial: 'layouts/footer' %>
       </div>
-
-      <%= render partial: 'layouts/footer' %>
-    </div>
-  </body>
+    </body>
+  <% else %>
+    <body class="hold-transition login-page">
+      <div class="wrapper">
+        <div>
+          <%= render 'layouts/flash_message' %>
+          <%= yield %>
+        </div>
+      </div>
+    </body>
+  <% end %>
 </html>

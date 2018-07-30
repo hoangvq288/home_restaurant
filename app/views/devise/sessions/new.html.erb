@@ -1,0 +1,17 @@
+<div class="login-box">
+  <div class="login-logo">
+    <b>Admin</b> Sủi cảo 162
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <div class="social-auth-links text-center">
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook ( not active yet )</a>
+
+      <%= link_to admin_google_oauth2_omniauth_authorize_path, class: 'btn btn-block btn-social btn-google btn-flat' do %>
+        <i class="fa fa-google-plus"></i> Sign in using Google+
+      <% end %>
+    </div>
+  </div>
+  <!-- /.login-box-body -->
+</div>
