@@ -1,7 +1,14 @@
 <tr>
-  <th><%= number_field_tag 's[id]', params[:s].try(:[], :id), class: 'form-control' %></th>
-  <th><%= search_field_tag 's[email]', params[:s].try(:[], :email), class: 'form-control' %></th>
-  <th><%= search_field_tag 's[name]', params[:s].try(:[], :name), class: 'form-control' %></th>
+  <th><%= number_field_tag 's[admins.id]', params['s'].try(:[], "admins.id"), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[admins.email]', params['s'].try(:[], "admins.email"), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[admins.name]', params['s'].try(:[], "admins.name"), class: 'form-control' %></th>
+
+  <th>
+    <%= text_field_tag 's[admins.created_at]', params['s'].try(:[], "admins.created_at"), class: 'form-control date-range' %>
+  </th>
+  <th>
+    <%= text_field_tag 's[admins.last_sign_in_at]', params['s'].try(:[], "admins.last_sign_in_at"), class: 'form-control date-range' %>
+  </th>
   <th>
     <button type="submit" class="btn btn-success">
       <i class="glyphicon glyphicon-search"></i>

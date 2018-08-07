@@ -1,9 +1,11 @@
-<%= form_with url: admins_path, method: :get do %>
+<%= form_with url: admins_path, local: true, method: :get, class: 'form-inline' do %>
   <table class="table table-hover">
     <tr>
       <th>ID</th>
       <th>Email</th>
       <th>Name</th>
+      <th>Created at</th>
+      <th>Last sign in at</th>
       <th></th>
     </tr>
 
@@ -14,6 +16,8 @@
         <td><%= admin.id %></td>
         <td><%= admin.email %></td>
         <td><%= admin.name %></td>
+        <td><%= date_time_format(admin.created_at) %></td>
+        <td><%= date_time_format(admin.last_sign_in_at) %></td>
         <td></td>
       </tr>
     <% end %>

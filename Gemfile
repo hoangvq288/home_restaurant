@@ -32,6 +32,10 @@ gem 'font-ionicons-rails'
 gem 'font_awesome5_rails'
 gem 'icheck-rails'
 gem 'lodash-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-daterangepicker-rails'
+
 
 group :development, :test do
   gem 'awesome_print'

@@ -4,8 +4,8 @@
       <i class="glyphicon glyphicon-search"></i>
     </button>
   </th>
-  <th><%= number_field_tag 's[id]', params[:s].try(:[], :id), class: 'form-control' %></th>
-  <th><%= search_field_tag 's[name]', params[:s].try(:[], :name), class: 'form-control' %></th>
-  <th><%= number_field_tag 's[seat_number]', params[:s].try(:[], :seat_number), class: 'form-control' %></th>
-  <th><%= select_tag 's[active]', options_for_select([["TRUE", true], ["FALSE", false]], params[:s].try(:[], :active)), prompt: 'Please choose', class: 'form-control' %></th>
+  <th><%= number_field_tag 's[tables.id]', params['s'].try(:[], "tables.id"), class: 'form-control' %></td>
+  <th><%= search_field_tag 's[tables.name]', params['s'].try(:[], "tables.name"), class: 'form-control' %></th>
+  <th><%= number_field_tag 's[tables.seat_number]', params['s'].try(:[], "tables.seat_number"), class: 'form-control' %></th>
+  <th><%= select_tag 's[tables.active]', options_for_select([["TRUE", true], ["FALSE", false]], params['s'].try(:[], "tables.active")), prompt: 'Please choose', class: 'form-control' %></th>
 </tr>

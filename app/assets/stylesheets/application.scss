@@ -1,5 +1,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'daterangepicker';
+@import 'bootstrap-datepicker3';
 @import 'admin-lte/dist/css/AdminLTE';
 @import 'admin-lte/dist/css/skins/skin-blue';
 @import 'icheck/flat/green';
@@ -10,4 +12,8 @@ body {
 
 .icheckbox_flat-green {
   margin-right: 10px;
+}
+
+.date-range {
+  width: 100% !important;
 }

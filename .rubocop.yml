@@ -2,6 +2,7 @@ inherit_from: .rubocop_todo.yml
 Documentation:
   Enabled: false
 AllCops:
+  TargetRubyVersion: '2.4'
   Exclude:
     - db/**/*.rb
     - Gemfile

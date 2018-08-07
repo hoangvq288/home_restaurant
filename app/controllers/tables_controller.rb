@@ -3,14 +3,16 @@ class TablesController < ApplicationController
 
   def index
     @table = Table.new # For popup modal
+    # column name for searching | Format should be { equal: [], range: [], like: [] }
+    conditions = { equal: %w[id seat_number active], like: ['name'] }
     # Pass model object then convert to class to call method in service
-    @tables = SearchService.search(@table, params).paginate(page: params[:page], per_page: params[:per_page])
+    @tables = SearchService.search(@table, params, conditions).paginate(page: params[:page], per_page: params[:per_page])
   end
 
   def create
     @table = Table.new(table_params)
     if @table.save
-      flash[:success] = 'Table created !'
+      flash[:notice] = 'Table created !'
     else
       flash[:error] = 'Error happened !'
     end
@@ -24,7 +26,7 @@ class TablesController < ApplicationController
   def update
     @table.assign_attributes(table_params)
     if @table.save
-      flash[:success] = 'Table updated !'
+      flash[:notice] = 'Table updated !'
     else
       flash[:error] = 'Error happened !'
     end
@@ -34,7 +36,7 @@ class TablesController < ApplicationController
   def destroy_multiple
     ids = params[:table_ids].split(',')
     if Table.where(id: ids).destroy_all
-      flash[:success] = 'Tables destroyed !'
+      flash[:notice] = 'Tables destroyed !'
     else
       flash[:error] = 'Error happened !'
     end

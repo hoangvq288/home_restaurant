@@ -10,5 +10,6 @@ module HomeRestaurant
   class Application < Rails::Application
     config.autoload_paths += Dir[Rails.root.join('app/services')]
     config.load_defaults 5.2
+    config.time_zone = 'Hanoi'
   end
 end

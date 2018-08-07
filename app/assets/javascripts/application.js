@@ -2,6 +2,9 @@
 //= require jquery_ujs
 //= require lodash
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
+//= require moment
+//= require daterangepicker
 //= require admin-lte/dist/js/app.js
 //= require 'icheck'
 //= require_tree .
@@ -32,4 +35,22 @@ $(function () {
     const $t = $(this);
     window.location.href = "?per_page=" + $t.val();
   });
+
+  // Date range picker && init empty value
+  $('.date-range').daterangepicker({
+    autoUpdateInput: false,
+    locale: {
+      format: 'YYYY-MM-DD',
+      cancelLabel: 'Clear'
+    }
+  });
+
+  $('.date-range').on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
+  });
+
+  $('.date-range').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
+
 })
