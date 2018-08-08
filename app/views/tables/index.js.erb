@@ -1,1 +1,5 @@
-$("#tables").replaceWith("<%= j render 'table' %>");
+$("#tables").html("<%= j render 'table' %>");
+
+<%= render partial: 'layouts/js_partials/check_box' %>
+<%= render partial: 'script' %>
+

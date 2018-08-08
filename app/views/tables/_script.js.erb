@@ -1,0 +1,48 @@
+$(function() {
+  $('[data-select-table]').on('ifChecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    tableId = $t.val(),
+    selectedTableIds = $ActionButtons.data('selected_table_ids') || [];
+    // Merge data array with checked id with unique values
+    $ActionButtons.data('selected_table_ids', _.union(selectedTableIds, [tableId]))
+                  .removeClass('hidden');
+
+  }).on('ifUnchecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    tableId = $t.val(),
+    selectedTableIds = $ActionButtons.data('selected_table_ids') || [];
+    // Exclude tableId from selected ids
+    selectedTableIds = _.without(selectedTableIds, tableId);
+    $ActionButtons.data('selected_table_ids', selectedTableIds);
+
+    if (selectedTableIds.length === 0) {
+      $ActionButtons.addClass('hidden');
+    }
+  })
+
+  // Check all button
+  $selectAllCheckBoxes = $('[data-select-all]');
+
+  $selectAllCheckBoxes.on('ifChecked', function() {
+    $t = $(this);
+    target_checkbox = $t.attr('data-select-target');
+    $(`[${target_checkbox}]`).each(function() {
+        $(this).iCheck('check');
+    });
+  }).on('ifUnchecked', function() {
+    $t = $(this);
+    target_checkbox = $t.attr('data-select-target');
+    $(`[${target_checkbox}]`).each(function() {
+        $(this).iCheck('uncheck');
+    });
+  })
+
+  // Submit delete button
+  $('[data-target="#delete_tables"]').on('click', function() {
+    const $form = $('#delete_tables_form');
+    $tableIdsHiddenInput = $form.find("input[name='table_ids']");
+    $tableIdsHiddenInput.val($ActionButtons.data('selected_table_ids'));
+  })
+})

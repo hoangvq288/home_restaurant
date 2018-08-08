@@ -1,4 +1,4 @@
-<%= form_with url: tables_path, local: true, method: :get do %>
+<%= form_with url: tables_path, method: :get do %>
   <table class="table table-hover">
     <tr>
       <th>
@@ -48,4 +48,6 @@
   </div>
 </div>
 
-<%= render 'script' %>
+<script>
+  <%= render 'script.js.erb' %>
+</script>

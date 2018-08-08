@@ -37,7 +37,7 @@ class SearchService
         conditions[:date_range]&.each do |column_name|
           start_date = param_value.split(" - ")[0]
           end_date = param_value.split(" - ")[1]
-          @query << "#{table_name}.#{column_name} >= '#{start_date}' AND #{table_name}.#{column_name} <= '#{end_date}'"
+          @query << "#{table_name}.#{column_name} >= '#{start_date}' AND #{table_name}.#{column_name} <= '#{end_date}'" if param_key == "#{table_name}.#{column_name}"
         end
       end
     end
