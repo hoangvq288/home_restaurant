@@ -25,7 +25,7 @@ $(function() {
   <%= render 'layouts/js_partials/check_all_button.js.erb' %>
 
   // Submit delete button
-  $('[data-target="#delete_categorys"]').on('click', function() {
+  $('[data-target="#delete_categories"]').on('click', function() {
     const $form = $('#delete_categories_form');
     $categoryIdsHiddenInput = $form.find("input[name='category_ids']");
     $categoryIdsHiddenInput.val($ActionButtons.data('selected_category_ids'));

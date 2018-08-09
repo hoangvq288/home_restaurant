@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = 'Table created !'
+      flash[:notice] = 'Category created !'
     else
       flash[:error] = 'Error happened !'
     end
