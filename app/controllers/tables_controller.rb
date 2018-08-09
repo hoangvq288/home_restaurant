@@ -19,8 +19,6 @@ class TablesController < ApplicationController
     redirect_to tables_path
   end
 
-  def show; end
-
   def edit; end
 
   def update

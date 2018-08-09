@@ -3,7 +3,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
     create_table :tables do |t|
       t.string :name
       t.integer :seat_number
-      t.boolean :active
+      t.boolean :active, default: true
       t.string :slug
       t.datetime :deleted_at
 

@@ -1,0 +1,11 @@
+<tr>
+  <th>
+    <button type="submit" class="btn btn-success">
+      <i class="glyphicon glyphicon-search"></i>
+    </button>
+  </th>
+  <th><%= number_field_tag 's[categories.id]', params['s'].try(:[], "categories.id"), class: 'form-control' %></th>
+  <th><%= search_field_tag 's[categories.name]', params['s'].try(:[], "categories.name"), class: 'form-control' %></th>
+
+  <th><%= select_tag 's[categories.active]', options_for_select([["TRUE", true], ["FALSE", false]], params['s'].try(:[], "categories.active")), prompt: 'Please choose', class: 'form-control' %></th>
+</tr>

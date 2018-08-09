@@ -1,0 +1,51 @@
+<%= form_with url: categories_path, method: :get do %>
+  <table class="table table-hover">
+    <tr>
+      <th>
+        <%= render partial: "components/check_box/check_all_checkbox.component",
+                   locals: {
+                     check_box_name: '',
+                     target_check_box: 'data-select-category'
+                   } %>
+      </th>
+      <th>ID</th>
+      <th>Category Name</th>
+      <th>Is active ?</th>
+    </tr>
+
+    <%= render 'search_form' %>
+
+    <% @categories.each do |category| %>
+      <tr>
+        <td>
+          <input type="checkbox" class="i-check" value="<%= category.id %>" data-select-category>
+        </td>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td><span class="label label-<%= category.active ? 'success' : 'danger' %>"><%= category.active %></span></td>
+        <td>
+          <%= link_to edit_category_path(category), class: 'btn btn-primary' do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<div class="row text-center">
+  <div class="col-xs-2">
+    <div>  Số mục hiển thị trên trang
+    <%= select_tag('',
+                    options_for_select([30, 50, 100], params[:per_page]),
+                    { class: 'form-control will_paginate_per_page' }) %>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <%= will_paginate @categories, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
+  </div>
+</div>
+
+<script>
+  <%#= render 'script.js.erb' %>
+</script>

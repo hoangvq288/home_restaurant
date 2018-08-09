@@ -1,0 +1,33 @@
+$(function() {
+  $('[data-select-category]').on('ifChecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    categoryId = $t.val(),
+    selectedCategoryIds = $ActionButtons.data('selected_category_ids') || [];
+    // Merge data array with checked id with unique values
+    $ActionButtons.data('selected_category_ids', _.union(selectedCategoryIds, [categoryId]))
+                  .removeClass('hidden');
+
+  }).on('ifUnchecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    categoryId = $t.val(),
+    selectedCategoryIds = $ActionButtons.data('selected_category_ids') || [];
+    // Exclude categoryId from selected ids
+    selectedCategoryIds = _.without(selectedCategoryIds, categoryId);
+    $ActionButtons.data('selected_category_ids', selectedCategoryIds);
+
+    if (selectedCategoryIds.length === 0) {
+      $ActionButtons.addClass('hidden');
+    }
+  })
+
+  <%= render 'layouts/js_partials/check_all_button.js.erb' %>
+
+  // Submit delete button
+  $('[data-target="#delete_categorys"]').on('click', function() {
+    const $form = $('#delete_categories_form');
+    $categoryIdsHiddenInput = $form.find("input[name='category_ids']");
+    $categoryIdsHiddenInput.val($ActionButtons.data('selected_category_ids'));
+  })
+})
