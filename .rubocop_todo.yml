@@ -166,7 +166,7 @@ Style/StringLiterals:
     - 'config/environments/production.rb'
     - 'config/puma.rb'
     - 'db/schema.rb'
-    - 'spec/factories/tables.rb'
+    - 'spec/factories/*'
     - 'spec/rails_helper.rb'
 
 # Offense count: 1

@@ -1,30 +1,32 @@
-<%= form_with url: categories_path, method: :get do %>
+<%= form_with url: dishes_path, method: :get do %>
   <table class="table table-hover">
     <tr>
       <th>
         <%= render partial: "components/check_box/check_all_checkbox.component",
                    locals: {
                      check_box_name: '',
-                     target_check_box: 'data-select-category'
+                     target_check_box: 'data-select-dish'
                    } %>
       </th>
       <th>ID</th>
-      <th>Category Name</th>
+      <th>Name of dish</th>
+      <th>Name of category</th>
       <th>Is active ?</th>
     </tr>
 
     <%= render 'search_form' %>
 
-    <% @categories.each do |category| %>
+    <% @dishes.each do |dish| %>
       <tr>
         <td>
-          <input type="checkbox" class="i-check" value="<%= category.id %>" data-select-category>
+          <input type="checkbox" class="i-check" value="<%= dish.id %>" data-select-dish>
         </td>
-        <td><%= category.id %></td>
-        <td><%= category.name %></td>
-        <td><span class="label label-<%= category.active ? 'success' : 'danger' %>"><%= category.active %></span></td>
+        <td><%= dish.id %></td>
+        <td><%= dish.name %></td>
+        <td><%= dish.category.name %></td>
+        <td><span class="label label-<%= dish.active ? 'success' : 'danger' %>"><%= dish.active %></span></td>
         <td>
-          <%= link_to edit_category_path(category), class: 'btn btn-primary' do %>
+          <%= link_to edit_dish_path(dish), class: 'btn btn-primary' do %>
             <i class="fa fa-edit"></i>
           <% end %>
         </td>
@@ -42,7 +44,7 @@
     </div>
   </div>
   <div class="col-xs-6">
-    <%= will_paginate @categories, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
+    <%= will_paginate @dishes, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
   </div>
 </div>
 

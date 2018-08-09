@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     if @category.save
       flash[:notice] = 'Category created !'
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = @category.errors.full_messages.join(" ! ")
     end
     redirect_to categories_path
   end
@@ -25,10 +25,11 @@ class CategoriesController < ApplicationController
     @category.assign_attributes(category_params)
     if @category.save
       flash[:notice] = 'Category updated !'
+      redirect_to categories_path
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = @category.errors.full_messages.join(" ! ")
+      render 'edit'
     end
-    redirect_to categories_path
   end
 
   def destroy_multiple

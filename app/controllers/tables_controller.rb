@@ -14,7 +14,7 @@ class TablesController < ApplicationController
     if @table.save
       flash[:notice] = 'Table created !'
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = @table.errors.full_messages.join(" ! ")
     end
     redirect_to tables_path
   end
@@ -25,10 +25,11 @@ class TablesController < ApplicationController
     @table.assign_attributes(table_params)
     if @table.save
       flash[:notice] = 'Table updated !'
+      redirect_to tables_path
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = @table.errors.full_messages.join(" ! ")
+      render 'edit'
     end
-    redirect_to tables_path
   end
 
   def destroy_multiple

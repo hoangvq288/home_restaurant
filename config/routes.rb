@@ -9,14 +9,25 @@ Rails.application.routes.draw do
   end
 
 
+  # ====== TABLE ROUTES ======
   resources :tables, except: %i[new destroy] do
     collection do
       delete :destroy_multiple
     end
   end
 
+  # ====== ADMIN ROUTES ======
   resources :admins, except: %i[new destroy]
+
+  # ====== CATEGORY ROUTES ======
   resources :categories, except: %i[new destroy] do
+    collection do
+      delete :destroy_multiple
+    end
+  end
+
+  # ====== DISH ROUTES ======
+  resources :dishes, except: %i[new destroy] do
     collection do
       delete :destroy_multiple
     end

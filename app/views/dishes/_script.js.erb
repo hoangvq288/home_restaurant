@@ -1,0 +1,33 @@
+$(function() {
+  $('[data-select-dish]').on('ifChecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    dishId = $t.val(),
+    selectedDishIds = $ActionButtons.data('selected_dish_ids') || [];
+    // Merge data array with checked id with unique values
+    $ActionButtons.data('selected_dish_ids', _.union(selectedDishIds, [dishId]))
+                  .removeClass('hidden');
+
+  }).on('ifUnchecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    dishId = $t.val(),
+    selectedDishIds = $ActionButtons.data('selected_dish_ids') || [];
+    // Exclude dishId from selected ids
+    selectedDishIds = _.without(selectedDishIds, dishId);
+    $ActionButtons.data('selected_dish_ids', selectedDishIds);
+
+    if (selectedDishIds.length === 0) {
+      $ActionButtons.addClass('hidden');
+    }
+  })
+
+  <%= render 'layouts/js_partials/check_all_button.js.erb' %>
+
+  // Submit delete button
+  $('[data-target="#delete_dishes"]').on('click', function() {
+    const $form = $('#delete_dishes_form');
+    $dishIdsHiddenInput = $form.find("input[name='dish_ids']");
+    $dishIdsHiddenInput.val($ActionButtons.data('selected_dish_ids'));
+  })
+})

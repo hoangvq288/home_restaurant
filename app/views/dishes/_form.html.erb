@@ -1,0 +1,34 @@
+<%= simple_form_for(@dish) do |f| %>
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-xs-10">
+        <%= f.association :category %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.input :price %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-10">
+        <%= f.input :description %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.input :active, input_html: { class: 'i-check' } %>
+    </div>
+
+  </div>
+
+  <div class="box-footer">
+    <%= f.button :submit %>
+  </div>
+<% end %>

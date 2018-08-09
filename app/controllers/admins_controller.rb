@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
     if @admin.save
       flash[:notice] = 'Admin created !'
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = @admin.errors.full_messages.join(" ! ")
     end
     redirect_to admins_path
   end
