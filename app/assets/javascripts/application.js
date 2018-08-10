@@ -53,4 +53,9 @@ $(function () {
       $(this).val('');
   });
 
+
+  // Make table row into link
+  $("tr[data-href]").on('click', function() {
+    window.location = $(this).data('href');
+  })
 })

@@ -18,7 +18,7 @@
     <%= render 'search_form' %>
 
     <% @categories.each do |category| %>
-      <tr>
+      <tr data-href="<%= dishes_path('s[categories.name]': category.name) %>">
         <td>
           <input type="checkbox" class="i-check" value="<%= category.id %>" data-select-category>
         </td>
