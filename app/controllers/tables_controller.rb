@@ -14,7 +14,7 @@ class TablesController < ApplicationController
     if @table.save
       flash[:notice] = 'Table created !'
     else
-      flash[:error] = @table.errors.full_messages.join(" ! ")
+      flash[:error] = @table.errors.full_messages.join(' ! ')
     end
     redirect_to tables_path
   end
@@ -27,7 +27,7 @@ class TablesController < ApplicationController
       flash[:notice] = 'Table updated !'
       redirect_to tables_path
     else
-      flash[:error] = @table.errors.full_messages.join(" ! ")
+      flash[:error] = @table.errors.full_messages.join(' ! ')
       render 'edit'
     end
   end

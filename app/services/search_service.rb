@@ -1,15 +1,20 @@
 # rubocop:disable all
 class SearchService
   class << self
-    def search(object, params, conditions = {}, join_table_array = nil)
+    def search(object, params, conditions = {}, join_table_array = [], group_having_hash = {})
       model = object.class
       return model.all if params['s'].blank? # For no searching
 
+      # Check any table is joined
+      model = model.joins(join_table_array) if join_table_array.present?
       # Using table attribute to compare params attribute
       search_params = params['s'].select { |_,v| v.present? } # Remove empty search value
       handle_conditions(conditions, search_params)
-      model.where(@query.join(" AND "))
-      # TO DO : implement joins table
+      if group_having_hash.present?
+        model.where(@query.join(" AND ")).group(group_having_hash.keys[0]).having(group_having_hash.values[0])
+      else
+        model.where(@query.join(" AND "))
+      end
     end
 
     def handle_conditions(conditions = {}, search_params)
@@ -43,6 +48,3 @@ class SearchService
     end
   end
 end
-
-# Company.joins(:users).group('companies.id').having('sum(users.tier_level) > 16')
-# Company.joins(:users).group('companies.id').having('count(users) >= 16')

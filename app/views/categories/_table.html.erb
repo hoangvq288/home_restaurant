@@ -10,7 +10,9 @@
       </th>
       <th>ID</th>
       <th>Category Name</th>
+      <th>Number of dishes</th>
       <th>Is active ?</th>
+      <th></th>
     </tr>
 
     <%= render 'search_form' %>
@@ -22,6 +24,7 @@
         </td>
         <td><%= category.id %></td>
         <td><%= category.name %></td>
+        <td><%= category.dishes.count %></td>
         <td><span class="label label-<%= category.active ? 'success' : 'danger' %>"><%= category.active %></span></td>
         <td>
           <%= link_to edit_category_path(category), class: 'btn btn-primary' do %>

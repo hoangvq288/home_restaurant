@@ -1,12 +1,14 @@
 class DishesController < ApplicationController
-  before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_action :set_dish, only: %i[show edit update]
 
   def index
     @dish = Dish.new # For popup modal
     # column name for searching | Format should be { equal: [], range: [], like: [] }
     conditions = { equal: %w[id active], like: ['name'] }
+    # add join tables
+    join_table_array = [:category]
     # Pass model object then convert to class to call method in service
-    @dishes = SearchService.search(@dish, params, conditions).includes(:category).paginate(page: params[:page], per_page: params[:per_page])
+    @dishes = SearchService.search(@dish, params, conditions, join_table_array).includes(:category).paginate(page: params[:page], per_page: params[:per_page])
   end
 
   def show; end
@@ -19,7 +21,7 @@ class DishesController < ApplicationController
     if @dish.save
       flash[:notice] = 'Dish created !'
     else
-      flash[:error] = @dish.errors.full_messages.join(" ! ")
+      flash[:error] = @dish.errors.full_messages.join(' ! ')
     end
     redirect_to dishes_path
   end
@@ -29,7 +31,7 @@ class DishesController < ApplicationController
       flash[:notice] = 'Dish updated !'
       redirect_to dishes_path
     else
-      flash[:error] = @dish.errors.full_messages.join(" ! ")
+      flash[:error] = @dish.errors.full_messages.join(' ! ')
       render 'edit'
     end
   end
