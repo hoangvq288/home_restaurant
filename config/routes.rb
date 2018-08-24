@@ -32,4 +32,11 @@ Rails.application.routes.draw do
       delete :destroy_multiple
     end
   end
+
+  # ====== DISH ROUTES ======
+  resources :toppings, except: %i[new destroy] do
+    collection do
+      delete :destroy_multiple
+    end
+  end
 end

@@ -1,0 +1,52 @@
+<%= form_with url: toppings_path, method: :get do %>
+  <table class="table table-hover">
+    <tr>
+      <th>
+        <%= render partial: "components/check_box/check_all_checkbox.component",
+                   locals: {
+                     check_box_name: '',
+                     target_check_box: 'data-select-topping'
+                   } %>
+      </th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Is active ?</th>
+      <th></th>
+    </tr>
+
+    <%= render 'search_form' %>
+
+    <% @toppings.each do |topping| %>
+      <tr>
+        <td>
+          <input type="checkbox" class="i-check" value="<%= topping.id %>" data-select-topping>
+        </td>
+        <td><%= topping.id %></td>
+        <td><%= topping.name %></td>
+        <td><span class="label label-<%= topping.active ? 'success' : 'danger' %>"><%= topping.active %></span></td>
+        <td>
+          <%= link_to edit_topping_path(topping), class: 'btn btn-primary' do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<div class="row text-center">
+  <div class="col-xs-2">
+    <div>  Số mục hiển thị trên trang
+    <%= select_tag('',
+                    options_for_select([30, 50, 100], params[:per_page]),
+                    { class: 'form-control will_paginate_per_page' }) %>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <%= will_paginate @toppings, { link_options: { 'data-remote': true }, renderer: BootstrapPagination::Rails } %>
+  </div>
+</div>
+
+<script>
+  <%= render 'script.js.erb' %>
+</script>

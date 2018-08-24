@@ -1,0 +1,10 @@
+<tr>
+  <th>
+    <button type="submit" class="btn btn-success">
+      <i class="glyphicon glyphicon-search"></i>
+    </button>
+  </th>
+  <th><%= number_field_tag 's[toppings.id]', params['s'].try(:[], "toppings.id"), class: 'form-control' %></td>
+  <th><%= search_field_tag 's[toppings.name]', params['s'].try(:[], "toppings.name"), class: 'form-control' %></th>
+  <th><%= select_tag 's[toppings.active]', options_for_select([["TRUE", true], ["FALSE", false]], params['s'].try(:[], "toppings.active")), prompt: 'Please choose', class: 'form-control' %></th>
+</tr>

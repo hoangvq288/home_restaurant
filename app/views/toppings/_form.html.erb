@@ -1,0 +1,15 @@
+<%= simple_form_for(@topping) do |f| %>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= f.input :name %>    
+      </div>
+    </div>
+    <div class="row">
+      <%= f.input :active, input_html: { class: 'i-check' } %>
+    </div>
+  </div>
+  <div class="box-footer">
+    <%= f.button :submit %>
+  </div>
+<% end %>

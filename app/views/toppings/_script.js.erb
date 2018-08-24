@@ -1,0 +1,33 @@
+$(function() {
+  $('[data-select-topping]').on('ifChecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    toppingId = $t.val(),
+    selectedToppingIds = $ActionButtons.data('selected_topping_ids') || [];
+    // Merge data array with checked id with unique values
+    $ActionButtons.data('selected_topping_ids', _.union(selectedToppingIds, [toppingId]))
+                  .removeClass('hidden');
+
+  }).on('ifUnchecked', function() {
+    $ActionButtons = $('[data-action_button]');
+    let $t = $(this),
+    toppingId = $t.val(),
+    selectedToppingIds = $ActionButtons.data('selected_topping_ids') || [];
+    // Exclude toppingId from selected ids
+    selectedToppingIds = _.without(selectedToppingIds, toppingId);
+    $ActionButtons.data('selected_topping_ids', selectedToppingIds);
+
+    if (selectedToppingIds.length === 0) {
+      $ActionButtons.addClass('hidden');
+    }
+  })
+
+  <%= render 'layouts/js_partials/check_all_button.js.erb' %>
+
+  // Submit delete button
+  $('[data-target="#delete_toppings"]').on('click', function() {
+    const $form = $('#delete_toppings_form');
+    $toppingIdsHiddenInput = $form.find("input[name='topping_ids']");
+    $toppingIdsHiddenInput.val($ActionButtons.data('selected_topping_ids'));
+  })
+})
