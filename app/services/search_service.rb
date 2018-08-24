@@ -6,7 +6,7 @@ class SearchService
       return model.all if params['s'].blank? # For no searching
 
       # Check any table is joined
-      model = model.joins(join_table_array) if join_table_array.present?
+      model = model.left_joins(join_table_array) if join_table_array.present?
       # Using table attribute to compare params attribute
       search_params = params['s'].select { |_,v| v.present? } # Remove empty search value
       handle_conditions(conditions, search_params)

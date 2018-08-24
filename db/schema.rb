@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_070710) do
+ActiveRecord::Schema.define(version: 2018_08_24_034735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2018_08_23_070710) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_toppings", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "topping_id"
+    t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_toppings_on_category_id"
+    t.index ["topping_id"], name: "index_category_toppings_on_topping_id"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -78,5 +89,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_070710) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "category_toppings", "categories"
+  add_foreign_key "category_toppings", "toppings"
   add_foreign_key "dishes", "categories"
 end

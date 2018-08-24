@@ -6,7 +6,8 @@
 //= require moment
 //= require daterangepicker
 //= require admin-lte/dist/js/app.js
-//= require 'icheck'
+//= require icheck
+//= require select2-full
 //= require_tree .
 
 $(function () {
@@ -28,6 +29,12 @@ $(function () {
         $t.parent().removeClass('active');
       }
     })
+  });
+
+  // Select 2
+  $.fn.select2.defaults.set('width', '70%');
+  $('.select2').select2({
+    theme : 'bootstrap'
   });
 
   // Change pagination per_page
@@ -56,6 +63,7 @@ $(function () {
 
   // Make table row into link
   $("tr[data-href]").on('click', function() {
-    window.location = $(this).data('href');
+    $('#infoModal').find('.modal-header').find('.detail').html("Category detail");
+    $('#infoModal').modal('show').find('.modal-body').load($(this).data('href'));
   })
 })

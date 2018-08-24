@@ -11,6 +11,11 @@
     <%= number_field_tag 's[dishes_count_to]', params['s'].try(:[], "dishes_count_to"), class: 'form-control', placeholder: 'To' %>  
   </th>
 
+  <th>
+    <%= number_field_tag 's[toppings_count_from]', params['s'].try(:[], "toppings_count_from"), class: 'form-control', placeholder: 'From' %>
+    <%= number_field_tag 's[toppings_count_to]', params['s'].try(:[], "toppings_count_to"), class: 'form-control', placeholder: 'To' %>  
+  </th>
+
   <th><%= select_tag 's[categories.active]', options_for_select([["TRUE", true], ["FALSE", false]], params['s'].try(:[], "categories.active")), prompt: 'Please choose', class: 'form-control' %></th>
   <th></th>
 </tr>

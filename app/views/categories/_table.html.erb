@@ -11,6 +11,7 @@
       <th>ID</th>
       <th>Category Name</th>
       <th>Number of dishes</th>
+      <th>Number of toppings</th>
       <th>Is active ?</th>
       <th></th>
     </tr>
@@ -18,13 +19,14 @@
     <%= render 'search_form' %>
 
     <% @categories.each do |category| %>
-      <tr data-href="<%= dishes_path('s[categories.name]': category.name) %>">
+      <tr data-href=<%= category_path(category) %>>
         <td>
           <input type="checkbox" class="i-check" value="<%= category.id %>" data-select-category>
         </td>
         <td><%= category.id %></td>
         <td><%= category.name %></td>
         <td><%= category.dishes.count %></td>
+        <td><%= category.toppings.count %></td>
         <td><span class="label label-<%= category.active ? 'success' : 'danger' %>"><%= category.active %></span></td>
         <td>
           <%= link_to edit_category_path(category), class: 'btn btn-primary' do %>
@@ -49,6 +51,7 @@
   </div>
 </div>
 
+<%= render 'components/info_modal' %>
 <script>
   <%= render 'script.js.erb' %>
 </script>

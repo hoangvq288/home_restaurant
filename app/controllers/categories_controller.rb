@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[edit update]
+  layout 'blank', only: :show
+  before_action :set_category, only: %i[show edit update]
 
   def index
     @category = Category.new # For popup modal
@@ -22,6 +23,8 @@ class CategoriesController < ApplicationController
   end
 
   def edit; end
+
+  def show; end
 
   def update
     @category.assign_attributes(category_params)
@@ -51,16 +54,19 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :active)
+    params.require(:category).permit(:name, :active, topping_ids: [])
   end
 
   # rubocop:disable all
   def filter_group_by_condition(params)
-    return if params['s'].try(:[], 'dishes_count_from').blank? && params['s'].try(:[], 'dishes_count_to').blank?
-    @join_table_array = [:dishes]
+    return if params['s'].try(:[], 'dishes_count_from').blank? && params['s'].try(:[], 'dishes_count_to').blank? && 
+              params['s'].try(:[], 'toppings_count_from').blank? && params['s'].try(:[], 'toppings_count_to').blank?
+    @join_table_array = [:dishes, :toppings]
     having_clause = []
-    having_clause << "COUNT(dishes) >= #{params['s']['dishes_count_from']}" if params['s'].try(:[], 'dishes_count_from').present?
-    having_clause << "COUNT(dishes) <= #{params['s']['dishes_count_to']}" if params['s'].try(:[], 'dishes_count_to').present?
-    @group_having_hash = { 'categories.id': having_clause.join(' AND ') }
+    having_clause << "COUNT(DISTINCT dishes) >= #{params['s']['dishes_count_from']}" if params['s'].try(:[], 'dishes_count_from').present?
+    having_clause << "COUNT(DISTINCT dishes) <= #{params['s']['dishes_count_to']}" if params['s'].try(:[], 'dishes_count_to').present?
+    having_clause << "COUNT(DISTINCT toppings) >= #{params['s']['toppings_count_from']}" if params['s'].try(:[], 'toppings_count_from').present?
+    having_clause << "COUNT(DISTINCT toppings) <= #{params['s']['toppings_count_to']}" if params['s'].try(:[], 'toppings_count_to').present?
+    @group_having_hash = { 'categories.id' => having_clause.join(' AND ') }
   end
 end
