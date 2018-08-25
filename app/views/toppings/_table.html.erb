@@ -24,7 +24,7 @@
         </td>
         <td><%= topping.id %></td>
         <td><%= topping.name %></td>
-        <td><%= topping.price %></td>
+        <td><%= currency_format(topping.price) %></td>
         <td><span class="label label-<%= topping.active ? 'success' : 'danger' %>"><%= topping.active %></span></td>
         <td>
           <%= link_to edit_topping_path(topping), class: 'btn btn-primary' do %>

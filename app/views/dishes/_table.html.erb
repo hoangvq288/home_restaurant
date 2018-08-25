@@ -24,7 +24,7 @@
         </td>
         <td><%= dish.id %></td>
         <td><%= dish.name %></td>
-        <td><%= dish.price %></td>
+        <td><%= currency_format(dish.price) %></td>
         <td><%= dish.category.name %></td>
         <td><span class="label label-<%= dish.active ? 'success' : 'danger' %>"><%= dish.active %></span></td>
         <td>
