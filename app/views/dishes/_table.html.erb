@@ -10,6 +10,7 @@
       </th>
       <th>ID</th>
       <th>Name of dish</th>
+      <th>Price</th>
       <th>Name of category</th>
       <th>Is active ?</th>
     </tr>
@@ -23,6 +24,7 @@
         </td>
         <td><%= dish.id %></td>
         <td><%= dish.name %></td>
+        <td><%= dish.price %></td>
         <td><%= dish.category.name %></td>
         <td><span class="label label-<%= dish.active ? 'success' : 'danger' %>"><%= dish.active %></span></td>
         <td>

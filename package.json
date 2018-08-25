@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/diepsohung/home_restaurant#readme",
   "dependencies": {
-    "admin-lte": "2.3.5"
+    "admin-lte": "2.3.5",
+    "npm": "^6.4.0"
   }
 }

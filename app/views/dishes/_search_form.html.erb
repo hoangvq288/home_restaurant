@@ -6,6 +6,10 @@
   </th>
   <th><%= number_field_tag 's[dishes.id]', params['s'].try(:[], "dishes.id"), class: 'form-control' %></td>
   <th><%= search_field_tag 's[dishes.name]', params['s'].try(:[], "dishes.name"), class: 'form-control' %></th>
+  <th>
+    <%= number_field_tag 's[dishes.price_from]', params['s'].try(:[], "dishes.price_from"), class: 'form-control', placeholder: 'From' %>
+    <%= number_field_tag 's[dishes.price_to]', params['s'].try(:[], "dishes.price_to"), class: 'form-control', placeholder: 'To' %>  
+  </th>
   <th><%= search_field_tag 's[categories.name]', params['s'].try(:[], "categories.name"), class: 'form-control' %></th>
   <th><%= select_tag 's[dishes.active]', options_for_select([["TRUE", true], ["FALSE", false]], params['s'].try(:[], "dishes.active")), prompt: 'Please choose', class: 'form-control' %></th>
 </tr>

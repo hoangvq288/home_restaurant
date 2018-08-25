@@ -1,8 +1,14 @@
 <%= simple_form_for(@topping) do |f| %>
   <div class="box-body">
     <div class="row">
-      <div class="col-xs-4">
-        <%= f.input :name %>    
+      <div class="col-xs-8">
+        <%= f.input :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control', data: { money: '' } %>
       </div>
     </div>
     <div class="row">

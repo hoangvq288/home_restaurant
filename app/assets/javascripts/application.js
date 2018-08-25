@@ -7,10 +7,18 @@
 //= require daterangepicker
 //= require admin-lte/dist/js/app.js
 //= require icheck
+//= require jquery.mask
 //= require select2-full
 //= require_tree .
 
 $(function () {
+  // Mask input
+  $('input[data-money]').mask("000.000", {reverse: true});
+
+  $("form").submit(function () {
+    $(this).find('input[data-money]').unmask();
+  })
+
   // Init i-check checkboxes
   $('input[type="checkbox"].i-check, input[type="radio"].i-check').iCheck({
     checkboxClass: 'icheckbox_flat-green',

@@ -35,6 +35,7 @@ gem 'lodash-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-daterangepicker-rails'
+gem 'jquery_mask_rails'
 
 
 group :development, :test do

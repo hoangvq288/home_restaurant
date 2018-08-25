@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_034735) do
   create_table "toppings", force: :cascade do |t|
     t.string "name"
     t.boolean "active", default: true
+    t.integer "price", default: 0
     t.datetime "deleted_at"
     t.string "slug"
     t.datetime "created_at", null: false

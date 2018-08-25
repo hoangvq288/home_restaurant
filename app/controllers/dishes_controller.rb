@@ -4,7 +4,7 @@ class DishesController < ApplicationController
   def index
     @dish = Dish.new # For popup modal
     # column name for searching | Format should be { equal: [], range: [], like: [] }
-    conditions = { equal: %w[id active], like: ['name'] }
+    conditions = { equal: %w[id active], like: ['name'], range: ['price'] }
     # add join tables
     join_table_array = [:category]
     # Pass model object then convert to class to call method in service

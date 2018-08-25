@@ -4,7 +4,7 @@ class ToppingsController < ApplicationController
   def index
     @topping = Topping.new # For popup modal
     # column name for searching | Format should be { equal: [], range: [], like: [] }
-    conditions = { equal: %w[id seat_number active], like: ['name'] }
+    conditions = { equal: %w[id active], like: ['name'], range: ['price'] }
     # Pass model object then convert to class to call method in service
     @toppings = SearchService.search(@topping, params, conditions).paginate(page: params[:page], per_page: params[:per_page])
   end
@@ -51,6 +51,6 @@ class ToppingsController < ApplicationController
   end
 
   def topping_params
-    params.require(:topping).permit(:name, :active, :deleted_at, :slug)
+    params.require(:topping).permit(:name, :active, :price, :deleted_at, :slug)
   end
 end
