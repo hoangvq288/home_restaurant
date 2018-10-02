@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = 'Category created !'
+      flash[:notice] = I18n.t('message.category.created_success')
     else
       flash[:error] = @category.errors.full_messages.join(' ! ')
     end
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
   def update
     @category.assign_attributes(category_params)
     if @category.save
-      flash[:notice] = 'Category updated !'
+      flash[:notice] = I18n.t('message.category.updated_success')
       redirect_to categories_path
     else
       flash[:error] = @category.errors.full_messages.join(' ! ')
@@ -40,9 +40,9 @@ class CategoriesController < ApplicationController
   def destroy_multiple
     ids = params[:category_ids].split(',')
     if Category.where(id: ids).destroy_all
-      flash[:notice] = 'Categories destroyed !'
+      flash[:notice] = I18n.t('message.category.destroyed_success')
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = I18n.t('message.category.error')
     end
     redirect_to categories_path
   end

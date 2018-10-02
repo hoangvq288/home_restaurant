@@ -31,3 +31,27 @@
 
 en:
   hello: "Hello world"
+  message:
+    admin:
+      created_success: 'Admin created !'
+    category:
+      created_success: 'Category created !'
+      updated_success: 'Category updated !'
+      destroyed_success: 'Categories destroyed !'
+      error: 'Error happened !'
+    dish:
+      created_success: 'Dish created !'
+      updated_success: 'Dish updated !'
+      destroyed_success: 'Dish destroyed !'
+      error: 'Error happened !'
+    table:
+      created_success: 'Table created !'
+      updated_success: 'Table updated !'
+      destroyed_success: 'Table destroyed !'
+      error: 'Error happened !'
+    topping:
+      created_success: 'Topping created !'
+      updated_success: 'Topping updated !'
+      destroyed_success: 'Topping destroyed !'
+      error: 'Error happened !'
+

@@ -16,7 +16,7 @@ class ToppingsController < ApplicationController
   def create
     @topping = Topping.new(topping_params)
     if @topping.save
-      flash[:notice] = 'Topping created !'
+      flash[:notice] = I18n.t('message.topping.created_success')
     else
       flash[:error] = @topping.errors.full_messages.join(' ! ')
     end
@@ -26,7 +26,7 @@ class ToppingsController < ApplicationController
   def update
     @topping.assign_attributes(topping_params)
     if @topping.save
-      flash[:notice] = 'Topping updated !'
+      flash[:notice] = I18n.t('message.topping.updated_success')
       redirect_to toppings_path
     else
       flash[:error] = @topping.errors.full_messages.join(' ! ')
@@ -37,9 +37,9 @@ class ToppingsController < ApplicationController
   def destroy_multiple
     ids = params[:topping_ids].split(',')
     if Topping.where(id: ids).destroy_all
-      flash[:notice] = 'Tables destroyed !'
+      flash[:notice] = I18n.t('message.topping.destroyed_success')
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = I18n.t('message.topping.error')
     end
     redirect_to toppings_path
   end

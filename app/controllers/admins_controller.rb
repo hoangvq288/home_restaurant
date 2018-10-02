@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      flash[:notice] = 'Admin created !'
+      flash[:notice] = I18n.t('message.admin.created_success')
     else
       flash[:error] = @admin.errors.full_messages.join(' ! ')
     end

@@ -12,7 +12,7 @@ class TablesController < ApplicationController
   def create
     @table = Table.new(table_params)
     if @table.save
-      flash[:notice] = 'Table created !'
+      flash[:notice] = I18n.t('message.table.created_success')
     else
       flash[:error] = @table.errors.full_messages.join(' ! ')
     end
@@ -24,7 +24,7 @@ class TablesController < ApplicationController
   def update
     @table.assign_attributes(table_params)
     if @table.save
-      flash[:notice] = 'Table updated !'
+      flash[:notice] = I18n.t('message.table.updated_success')
       redirect_to tables_path
     else
       flash[:error] = @table.errors.full_messages.join(' ! ')
@@ -35,9 +35,9 @@ class TablesController < ApplicationController
   def destroy_multiple
     ids = params[:table_ids].split(',')
     if Table.where(id: ids).destroy_all
-      flash[:notice] = 'Tables destroyed !'
+      flash[:notice] = I18n.t('message.table.destroyed_success')
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = I18n.t('message.table.error')
     end
     redirect_to tables_path
   end

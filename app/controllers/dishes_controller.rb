@@ -19,7 +19,7 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
 
     if @dish.save
-      flash[:notice] = 'Dish created !'
+      flash[:notice] = I18n.t('message.dish.created_success')
     else
       flash[:error] = @dish.errors.full_messages.join(' ! ')
     end
@@ -28,7 +28,7 @@ class DishesController < ApplicationController
 
   def update
     if @dish.update(dish_params)
-      flash[:notice] = 'Dish updated !'
+      flash[:notice] = I18n.t('message.dish.updated_success')
       redirect_to dishes_path
     else
       flash[:error] = @dish.errors.full_messages.join(' ! ')
@@ -39,9 +39,9 @@ class DishesController < ApplicationController
   def destroy_multiple
     ids = params[:dish_ids].split(',')
     if Dish.where(id: ids).destroy_all
-      flash[:notice] = 'Dishes destroyed !'
+      flash[:notice] = I18n.t('message.dish.destroyed_success')
     else
-      flash[:error] = 'Error happened !'
+      flash[:error] = I18n.t('message.dish.error')
     end
     redirect_to dishes_path
   end
