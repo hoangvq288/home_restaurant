@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def currency_format(money)
-    "#{number_to_currency(money, precision: 0, unit: '', delimiter: ".")} VND"
+    "#{number_to_currency(money, precision: 0, unit: '', delimiter: '.')} VND"
   end
 end
